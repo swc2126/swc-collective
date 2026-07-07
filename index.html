@@ -340,6 +340,8 @@
     letter-spacing: -0.005em;
   }
   .glance dd { color: var(--muted); font-size: 0.95rem; }
+  .edu-line { display: block; }
+  .edu-line + .edu-line { margin-top: 0.35rem; }
   .glance dd a {
     color: var(--ink);
     text-decoration: none;
@@ -732,7 +734,11 @@
           </div>
           <div>
             <dt>Education</dt>
-            <dd>MPH in Epidemiology, Columbia; executive education in human-centered design, Stanford GSB; B.S., Northwestern</dd>
+            <dd>
+              <span class="edu-line">B.S., Northwestern University</span>
+              <span class="edu-line">MPH, Columbia University Mailman School of Public Health</span>
+              <span class="edu-line">Executive Certificate, Stanford Graduate School of Business</span>
+            </dd>
           </div>
           <div>
             <dt>Boards</dt>
