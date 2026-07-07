@@ -108,6 +108,15 @@
     align-items: center;
     padding-top: 66px;
   }
+  .hello {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    color: var(--green);
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.15rem;
+    line-height: 1.3;
+  }
   .hero h1 {
     font-family: var(--display);
     font-weight: 600;
@@ -468,19 +477,30 @@
   .speaking-visual { aspect-ratio: 3 / 4; overflow: hidden; }
   .speaking-visual img { width: 100%; height: 100%; object-fit: cover; }
   .stages { margin-top: 4rem; border-top: 1px solid var(--hair); padding-top: 1.75rem; }
-  .stages ul {
-    list-style: none;
+  .marquee { overflow: hidden; margin-top: 1.5rem; }
+  .marquee-track {
     display: flex;
-    flex-wrap: wrap;
-    column-gap: clamp(1.75rem, 4vw, 3.5rem);
-    row-gap: 0.9rem;
+    width: max-content;
+    animation: marquee-scroll 36s linear infinite;
   }
-  .stages li {
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
-    letter-spacing: -0.005em;
-    color: var(--ink);
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-set {
+    display: flex;
+    align-items: center;
+    gap: clamp(3rem, 6vw, 5.5rem);
+    padding-right: clamp(3rem, 6vw, 5.5rem);
+  }
+  .marquee img {
+    width: auto;
+    filter: grayscale(1) brightness(0.35);
+    opacity: 0.85;
+  }
+  @keyframes marquee-scroll { to { transform: translateX(-50%); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; flex-wrap: wrap; width: auto; row-gap: 1rem; }
+    .marquee-set[aria-hidden="true"] { display: none; }
+    .marquee-set { flex-wrap: wrap; row-gap: 1rem; }
   }
 
   /* ---------- Advisory ---------- */
@@ -625,12 +645,13 @@
   <div class="wrap">
     <div class="hero">
       <div>
-        <h1 class="fade-up">
+        <p class="hello fade-up">Hi, nice to meet you.</p>
+        <h1 class="fade-up d1">
           Working on the future of
           <span class="rotator"><span class="word" id="rot-word">care.</span></span>
         </h1>
-        <p class="fade-up d1">I'm Summer Wright Collins: founder, consultant, executive, speaker, and writer. A technologist who understands people, blending science, sport, health, data, and design into my life's work.</p>
-        <a class="hero-cta fade-up d2" href="#doors">Step inside</a>
+        <p class="fade-up d2">I'm Summer Wright Collins: founder, consultant, executive, speaker, and writer. A technologist who understands people, blending science, sport, health, data, and design into my life's work.</p>
+        <a class="hero-cta fade-up d3" href="#doors">Step inside</a>
       </div>
       <div class="hero-visual fade-up d3">
         <img src="assets/specimen.jpg" alt="A green fern sprig pressed under glass on a white studio background" width="1536" height="2048" fetchpriority="high">
@@ -849,14 +870,26 @@
       </div>
       <div class="stages reveal" style="--d:0.1s">
         <p class="list-head">Prior speaking events include</p>
-        <ul>
-          <li>SXSW</li>
-          <li>HLTH</li>
-          <li>Techstars</li>
-          <li>Credera Innovation Forum</li>
-          <li>Slalom AI Innovation Conference</li>
-          <li>Leading Women Executives</li>
-        </ul>
+        <div class="marquee" role="img" aria-label="Logos of prior speaking events: SXSW, HLTH, Techstars, Credera, Slalom, and Leading Women Executives">
+          <div class="marquee-track">
+            <div class="marquee-set">
+              <img src="assets/logos/sxsw.svg" alt="" height="30">
+              <img src="assets/logos/hlth.svg" alt="" class="logo-hlth" height="24">
+              <img src="assets/logos/techstars.png" alt="" height="30">
+              <img src="assets/logos/credera.svg" alt="" height="30">
+              <img src="assets/logos/slalom.svg" alt="" height="32">
+              <img src="assets/logos/lwe.png" alt="" class="logo-lwe" height="44">
+            </div>
+            <div class="marquee-set" aria-hidden="true">
+              <img src="assets/logos/sxsw.svg" alt="" height="30">
+              <img src="assets/logos/hlth.svg" alt="" class="logo-hlth" height="24">
+              <img src="assets/logos/techstars.png" alt="" height="30">
+              <img src="assets/logos/credera.svg" alt="" height="30">
+              <img src="assets/logos/slalom.svg" alt="" height="32">
+              <img src="assets/logos/lwe.png" alt="" class="logo-lwe" height="44">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
