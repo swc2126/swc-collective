@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The SWC Collective · Summer Wright Collins</title>
+<meta name="description" content="The SWC Collective is the front door to Summer Wright Collins: healthcare innovation executive, consultant, founder, speaker, and writer.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=gambetta@400,401,500&f[]=switzer@300,400,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFBF9;
+    --paper-tint: #EFF6F1;
+    --ink: #10140F;
+    --muted: #4A5248;
+    --green: #047A48;        /* text-safe green, body sizes */
+    --green-display: #0A9B5C; /* display-size green type, >= 3:1 */
+    --signal: #14C46D;        /* surfaces, fills, underlines */
+    --hair: rgba(16, 20, 15, 0.14);
+    --display: "Clash Display", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Gambetta", Georgia, serif;
+    --body: "Switzer", "Helvetica Neue", Arial, sans-serif;
+    --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 300;
+    font-size: 1.0625rem;
+    line-height: 1.66;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--signal); color: var(--ink); }
+
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-left: clamp(1.25rem, 5vw, 4rem);
+    padding-right: clamp(1.25rem, 5vw, 4rem);
+  }
+
+  h1, h2 { text-wrap: balance; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s var(--ease);
+  }
+  header.scrolled { border-bottom-color: var(--hair); }
+  .header-inner {
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .wordmark {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  nav { display: flex; align-items: center; gap: 1.9rem; }
+  nav a {
+    font-size: 0.86rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.25s var(--ease);
+  }
+  nav a:hover { color: var(--ink); }
+  nav a.nav-cta {
+    color: var(--ink);
+    font-weight: 500;
+    box-shadow: inset 0 -2px 0 var(--signal);
+    padding-bottom: 2px;
+    transition: box-shadow 0.3s var(--ease);
+  }
+  nav a.nav-cta:hover { box-shadow: inset 0 -0.6em 0 var(--signal); }
+  @media (max-width: 880px) {
+    nav a:not(.nav-cta) { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    padding-top: 66px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.9rem, 6vw, 5.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .rotator {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--green-display);
+    letter-spacing: -0.01em;
+    line-height: 1.14;
+    padding-bottom: 0.08em;
+    overflow: hidden;
+  }
+  .rotator .word {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+  .js .rotator .word.swap-out { animation: word-out 0.45s var(--ease) forwards; }
+  .js .rotator .word.swap-in { animation: word-in 0.55s var(--ease); }
+  @keyframes word-out { to { opacity: 0; transform: translateY(-105%); } }
+  @keyframes word-in { from { opacity: 0; transform: translateY(105%); } }
+
+  .hero p {
+    margin-top: 1.9rem;
+    max-width: 38ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    margin-top: 2.6rem;
+    font-family: var(--body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--signal);
+    padding: 1.05rem 2.4rem;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.15s var(--ease);
+  }
+  .hero-cta:hover { background: var(--ink); color: var(--paper); }
+  .hero-cta:active { transform: translateY(1px); }
+  .hero-visual {
+    height: min(72vh, 660px);
+    overflow: hidden;
+  }
+  .hero-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .fade-up { opacity: 0; transform: translateY(26px); animation: rise 0.9s var(--ease) forwards; }
+  .fade-up.d1 { animation-delay: 0.1s; }
+  .fade-up.d2 { animation-delay: 0.22s; }
+  .fade-up.d3 { animation-delay: 0.34s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  html:not(.js) .fade-up { opacity: 1; transform: none; animation: none; }
+
+  /* ---------- Scroll reveals ----------
+     Visible by default; the animation only plays once the observer fires.
+     Headless renderers, crawlers, and no-JS all get fully painted content. */
+  .js .reveal.in { animation: reveal-in 0.85s var(--ease) both; animation-delay: var(--d, 0s); }
+  @keyframes reveal-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section { padding: clamp(5rem, 10vw, 8.5rem) 0; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+  .section-body {
+    margin-top: 1.4rem;
+    max-width: 60ch;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  /* ---------- Doors index ---------- */
+  #doors { padding-top: 0; }
+  .doors-lead {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-weight: 400;
+    max-width: 30ch;
+    margin-bottom: 3rem;
+    line-height: 1.35;
+  }
+  .door {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr) auto;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 2.1rem clamp(0.5rem, 1.5vw, 1.25rem);
+    border-top: 1px solid var(--hair);
+    text-decoration: none;
+    isolation: isolate;
+  }
+  .door:last-of-type { border-bottom: 1px solid var(--hair); }
+  .door::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--paper-tint);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s var(--ease);
+  }
+  .door:hover::before, .door:focus-visible::before { transform: scaleX(1); }
+  .door:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .door-title {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 3.6vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    transition: color 0.35s var(--ease);
+  }
+  .door:hover .door-title { color: var(--green); }
+  .door-desc { color: var(--muted); font-size: 0.97rem; }
+  .door-arrow {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--green);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+  }
+  .door:hover .door-arrow { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Atrium band + manifesto overlap ---------- */
+  .atrium { padding: 0; }
+  .atrium-img {
+    width: 100%;
+    height: clamp(320px, 58vh, 560px);
+    object-fit: cover;
+  }
+  .manifesto-panel {
+    background: var(--paper);
+    max-width: 880px;
+    margin: clamp(-5rem, -9vw, -7rem) auto 0;
+    position: relative;
+    padding: clamp(2.25rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4.5rem) 0;
+  }
+  .manifesto-panel p {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.45rem, 2.7vw, 2.15rem);
+    line-height: 1.44;
+    text-wrap: pretty;
+  }
+  .manifesto-panel p em {
+    font-style: italic;
+    color: var(--green);
+  }
+  .manifesto-panel .signoff {
+    margin-top: 2.25rem;
+    font-family: var(--body);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    margin-top: 3.25rem;
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .about-bio p {
+    max-width: 58ch;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .about-bio p + p { margin-top: 1.25rem; }
+  .about-bio p strong { color: var(--ink); font-weight: 500; }
+  .glance { border-top: 1px solid var(--hair); }
+  .glance > div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1.25rem;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .glance dt {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: -0.005em;
+  }
+  .glance dd { color: var(--muted); font-size: 0.95rem; }
+  .glance dd a {
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 var(--signal);
+    transition: box-shadow 0.3s var(--ease);
+  }
+  .glance dd a:hover { box-shadow: inset 0 -0.7em 0 var(--signal); }
+  .roles { margin-top: 4.5rem; }
+  .role {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr 1.15fr;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--hair);
+  }
+  .role:last-of-type { border-bottom: 1px solid var(--hair); }
+  .role-years {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--green);
+    white-space: nowrap;
+  }
+  .role-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+  .role-org {
+    display: block;
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+  .role-impact { color: var(--muted); font-size: 0.95rem; }
+
+  /* ---------- Consulting ---------- */
+  .consulting-grid {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .list-head {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: -0.005em;
+    margin-bottom: 1.25rem;
+  }
+  .who-item {
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--hair);
+  }
+  .who-item h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.3rem;
+    letter-spacing: -0.005em;
+  }
+  .who-item p { margin-top: 0.4rem; color: var(--muted); font-size: 0.96rem; }
+  .way {
+    padding: 1.6rem 1.6rem 1.75rem;
+    background: var(--paper-tint);
+  }
+  .way + .way { margin-top: 0.75rem; }
+  .way h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+  .way p { margin-top: 0.45rem; color: var(--muted); font-size: 0.96rem; }
+  .way strong { color: var(--green); font-weight: 500; }
+
+  /* ---------- Studio ---------- */
+  .studio { background: var(--paper-tint); }
+  .studio-grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+  }
+  .studio-grid figure { aspect-ratio: 4 / 5; overflow: hidden; }
+  .studio-grid img { width: 100%; height: 100%; object-fit: cover; }
+  .product {
+    margin-top: 2.75rem;
+    padding-top: 1.9rem;
+    border-top: 1px solid var(--hair);
+  }
+  .product h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    letter-spacing: -0.01em;
+  }
+  .product p { margin-top: 0.55rem; color: var(--muted); max-width: 46ch; }
+  .product a {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 var(--signal);
+    padding-bottom: 2px;
+    transition: box-shadow 0.3s var(--ease);
+  }
+  .product a:hover { box-shadow: inset 0 -0.7em 0 var(--signal); }
+
+  /* ---------- Speaking (paper theme; the dark stage photo carries the drama) ---------- */
+  .speaking-grid {
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .topics { margin-top: 2.75rem; list-style: none; }
+  .topics li { padding: 1.5rem 0; border-top: 1px solid var(--hair); }
+  .topics h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+  }
+  .topics p { margin-top: 0.45rem; color: var(--muted); font-size: 0.96rem; max-width: 52ch; }
+  .speaking-note {
+    margin-top: 2.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--green);
+    max-width: 44ch;
+    line-height: 1.5;
+  }
+  .speaking-visual { aspect-ratio: 3 / 4; overflow: hidden; }
+  .speaking-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .stages { margin-top: 4rem; border-top: 1px solid var(--hair); padding-top: 1.75rem; }
+  .stages ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: clamp(1.75rem, 4vw, 3.5rem);
+    row-gap: 0.9rem;
+  }
+  .stages li {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+
+  /* ---------- Advisory ---------- */
+  .advisory-intro {
+    margin-top: 1rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    color: var(--green);
+    line-height: 1.35;
+    padding-bottom: 0.2rem;
+  }
+  .advisory-cols {
+    margin-top: 3.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+  }
+  .advisory-cols > div { border-top: 1px solid var(--hair); padding-top: 1.6rem; }
+  .advisory-cols h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.45rem;
+    letter-spacing: -0.005em;
+  }
+  .advisory-cols p { margin-top: 0.7rem; color: var(--muted); }
+  .advisory-how {
+    margin-top: 3rem;
+    max-width: 56ch;
+    color: var(--muted);
+  }
+  .advisory-how strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- Writing ---------- */
+  .writing { text-align: center; }
+  .writing h2 { font-size: clamp(1.9rem, 3.2vw, 2.7rem); }
+  .writing p {
+    margin: 1.4rem auto 0;
+    max-width: 52ch;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .writing .mark {
+    display: block;
+    margin: 2rem auto 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--green);
+    padding-bottom: 0.2rem;
+  }
+
+  /* ---------- Contact (signal drench) ---------- */
+  .contact { background: var(--signal); color: var(--ink); }
+  .contact h2 { font-size: clamp(2.3rem, 4.6vw, 3.9rem); max-width: 16ch; }
+  .contact .section-body { color: rgba(16, 20, 15, 0.78); max-width: 52ch; }
+  .email-link {
+    display: inline-block;
+    margin-top: 2.75rem;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3.6vw, 2.7rem);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 0.3rem;
+    transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+    word-break: break-all;
+  }
+  .email-link:hover { color: var(--paper); border-bottom-color: var(--paper); }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--ink); color: rgba(250, 251, 249, 0.7); padding: 2.25rem 0; }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+  .footer-inner .fm {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--paper);
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 880px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-top: 96px;
+      padding-bottom: 3rem;
+      align-content: start;
+      min-height: auto;
+    }
+    .hero-visual { height: auto; aspect-ratio: 4 / 3; }
+    .door { grid-template-columns: 1fr; gap: 0.45rem; padding: 1.6rem 0.75rem; }
+    .door-arrow { display: none; }
+    .manifesto-panel { margin-top: -3rem; }
+    .about-grid, .consulting-grid, .studio-grid, .speaking-grid, .advisory-cols { grid-template-columns: 1fr; }
+    .role { grid-template-columns: 1fr; gap: 0.4rem; }
+    .speaking-visual { order: -1; aspect-ratio: 16 / 10; }
+    .studio-grid figure { aspect-ratio: 4 / 3; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-up { animation: none; opacity: 1; transform: none; }
+    .js .reveal.in { animation: none; }
+    .js .rotator .word.swap-out, .js .rotator .word.swap-in { animation: none; }
+    .door::before { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="#top">The SWC Collective</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#consulting">Consulting</a>
+      <a href="#studio">Studio</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#advisory">Advisory</a>
+      <a href="#writing">Writing</a>
+      <a class="nav-cta" href="mailto:summer.wright@gmail.com">Say hello</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+<div id="header-sentinel" aria-hidden="true"></div>
+
+<main>
+
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1 class="fade-up">
+          Working on the future of
+          <span class="rotator"><span class="word" id="rot-word">care.</span></span>
+        </h1>
+        <p class="fade-up d1">I'm Summer Wright Collins. Executive, consultant, founder, speaker, and writer, all in service of better health.</p>
+        <a class="hero-cta fade-up d2" href="#doors">Step inside</a>
+      </div>
+      <div class="hero-visual fade-up d3">
+        <img src="assets/specimen.jpg" alt="A green fern sprig pressed under glass on a white studio background" width="1536" height="2048" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+
+  <section id="doors">
+    <div class="wrap">
+      <p class="doors-lead reveal">One collective, five practices. Come through whichever door brought you here.</p>
+      <a class="door reveal" href="#consulting" style="--d:0.04s">
+        <span class="door-title">The Practice</span>
+        <span class="door-desc">Consulting for healthcare start-ups, providers, practices, and foundations.</span>
+        <span class="door-arrow">&darr;</span>
+      </a>
+      <a class="door reveal" href="#studio" style="--d:0.08s">
+        <span class="door-title">The Studio</span>
+        <span class="door-desc">Developing products that solve real problems and help people and organizations be their best: CallTime and TailWag.</span>
+        <span class="door-arrow">&darr;</span>
+      </a>
+      <a class="door reveal" href="#speaking" style="--d:0.12s">
+        <span class="door-title">The Stage</span>
+        <span class="door-desc">Speaking engagements for audiences that want more than a slide deck.</span>
+        <span class="door-arrow">&darr;</span>
+      </a>
+      <a class="door reveal" href="#advisory" style="--d:0.16s">
+        <span class="door-title">The Boardroom</span>
+        <span class="door-desc">Executive and advisory counsel for boards and leaders building what's next.</span>
+        <span class="door-arrow">&darr;</span>
+      </a>
+      <a class="door reveal" href="#writing" style="--d:0.2s">
+        <span class="door-title">The Book</span>
+        <span class="door-desc">Writing the story underneath it all: the book is underway.</span>
+        <span class="door-arrow">&darr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="atrium">
+    <img class="atrium-img reveal" src="assets/atrium.jpg" alt="A bright atrium where green plants climb a white architectural wall under a glass ceiling" width="2048" height="1152" loading="lazy">
+    <div class="manifesto-panel reveal" style="--d:0.1s">
+      <p>I've spent my career where health meets invention: in the executive seat, at the consulting table, on stage, and at the workbench. I keep the doors between those rooms open on purpose. The best ideas I've ever found <em>walked from one into another</em>.</p>
+      <p class="signoff">Summer Wright Collins, founder of The SWC Collective</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="reveal">About</h2>
+      <div class="about-grid">
+        <div class="about-bio reveal" style="--d:0.08s">
+          <p>I'm a <strong>trained epidemiologist</strong> with a designer's eye and a founder's urgency. For more than fifteen years I've worked across healthcare, member experience, and consumer digital products: leading innovation and strategy for one of the country's largest health plans, building the analytics backbone of a major pediatric health system, and turning messy data and real user behavior into decisions executives can act on.</p>
+          <p>Today the work spans five practices that feed each other. The consulting sharpens the ideas, the boardroom tests them, the studio ships them, the stage tells them, and the book is where the whole story is headed.</p>
+        </div>
+        <dl class="glance reveal" style="--d:0.16s">
+          <div>
+            <dt>Focus</dt>
+            <dd>Health, wellness, and healthcare innovation</dd>
+          </div>
+          <div>
+            <dt>Base</dt>
+            <dd>Dallas, TX, working everywhere</dd>
+          </div>
+          <div>
+            <dt>Education</dt>
+            <dd>MPH in Epidemiology, Columbia; executive education in human-centered design, Stanford GSB; B.S., Northwestern</dd>
+          </div>
+          <div>
+            <dt>Boards</dt>
+            <dd>The Dallas Entrepreneur Center; Texas Women's Foundation, Economic Leadership Council</dd>
+          </div>
+          <div>
+            <dt>Open to</dt>
+            <dd>Consulting, keynotes, board seats, advising, and new ideas</dd>
+          </div>
+          <div>
+            <dt>Reach me</dt>
+            <dd><a href="mailto:summer.wright@gmail.com">summer.wright@gmail.com</a> and <a href="https://linkedin.com/in/summerwrightcollins" target="_blank" rel="noopener">LinkedIn</a></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="roles reveal" style="--d:0.1s">
+        <p class="list-head">Selected roles</p>
+        <div class="role">
+          <span class="role-years">2023 to now</span>
+          <span class="role-title">Founder &amp; Principal<span class="role-org">Technology &amp; design studio, Dallas</span></span>
+          <span class="role-impact">Built TailWag and CallTime and took both to market end to end, as the studio's only operator.</span>
+        </div>
+        <div class="role">
+          <span class="role-years">2017 to 2023</span>
+          <span class="role-title">Associate VP, Innovation &amp; Strategy<span class="role-org">Health Care Service Corporation (Blue Cross Blue Shield)</span></span>
+          <span class="role-impact">Led multi-state innovation for 17M+ members; piloted 10+ offerings and avoided $8M+ in build cost by validating or killing concepts before scale.</span>
+        </div>
+        <div class="role">
+          <span class="role-years">2013 to 2016</span>
+          <span class="role-title">VP, Population Health Informatics &amp; IT Strategy<span class="role-org">Children's Health System of Texas</span></span>
+          <span class="role-impact">Built the analytics and IT strategy backbone for the nation's 8th-largest pediatric hospital, and launched telemedicine reaching 500K+ students.</span>
+        </div>
+        <div class="role">
+          <span class="role-years">2010 to 2013</span>
+          <span class="role-title">Director, Community Health Analytics<span class="role-org">Dallas-Fort Worth Hospital System Foundation</span></span>
+          <span class="role-impact">Public-health analytics, BI enablement, and chairing a multi-organization community health collaborative.</span>
+        </div>
+        <div class="role">
+          <span class="role-years">2005 to 2009</span>
+          <span class="role-title">Epidemiology &amp; Research<span class="role-org">OMNI Institute; Children's Health Fund; Columbia University</span></span>
+          <span class="role-impact">Large-scale studies including the CDC Youth Risk Behavior Survey. Where the statistical discipline comes from.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="consulting">
+    <div class="wrap">
+      <h2 class="reveal">The Practice</h2>
+      <p class="section-body reveal" style="--d:0.08s">Organizations call me at inflection points: a new model of care, a new technology, a leadership chapter nobody has read before. The consulting is senior and hands-on, close to the real problem.</p>
+      <div class="consulting-grid">
+        <div class="reveal" style="--d:0.1s">
+          <p class="list-head">Who I work with</p>
+          <div class="who-item">
+            <h3>Healthcare start-ups</h3>
+            <p>Positioning, product strategy, and the reality of building for care.</p>
+          </div>
+          <div class="who-item">
+            <h3>Providers &amp; practices</h3>
+            <p>Service design, growth, and technology that fits clinical life.</p>
+          </div>
+          <div class="who-item">
+            <h3>Foundations</h3>
+            <p>Mission and capital, turned into programs that move outcomes.</p>
+          </div>
+          <div class="who-item">
+            <h3>Leaders</h3>
+            <p>A thought partner for decisions that sit outside the org chart.</p>
+          </div>
+        </div>
+        <div class="reveal" style="--d:0.18s">
+          <p class="list-head">Ways in</p>
+          <div class="way">
+            <h3>The strategy sprint</h3>
+            <p>A focused engagement around <strong>one hard question</strong>, measured in weeks.</p>
+          </div>
+          <div class="way">
+            <h3>Ongoing advisory</h3>
+            <p>A standing seat at your table, measured in quarters.</p>
+          </div>
+          <div class="way">
+            <h3>The embedded chapter</h3>
+            <p>Hands inside the work alongside your team, for the seasons that need it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="studio" class="studio">
+    <div class="wrap">
+      <div class="studio-grid">
+        <figure class="reveal">
+          <img src="assets/bench.jpg" alt="A white workbench with interface sketches on grid paper, a phone, and a small succulent" width="2048" height="1536" loading="lazy">
+        </figure>
+        <div>
+          <h2 class="reveal">The Studio</h2>
+          <p class="section-body reveal" style="--d:0.08s">The studio is where I build: products and tools that surface insight and let people and businesses operate at their highest level. Both came from watching a specific kind of business run harder than it should.</p>
+          <div class="product reveal" style="--d:0.14s">
+            <h3>CallTime</h3>
+            <p>Communication training for athletes.</p>
+            <a href="https://getcalltime.co" target="_blank" rel="noopener">Visit getcalltime.co</a>
+          </div>
+          <div class="product reveal" style="--d:0.2s">
+            <h3>TailWag</h3>
+            <p>AI-powered SMS for independent dog daycare owners.</p>
+            <a href="https://usetailwag.co" target="_blank" rel="noopener">Visit usetailwag.co</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speaking" class="speaking">
+    <div class="wrap">
+      <div class="speaking-grid">
+        <div>
+          <h2 class="reveal">The Stage</h2>
+          <p class="section-body reveal" style="--d:0.08s">I speak about what I've lived, for audiences that want more than a slide deck.</p>
+          <ul class="topics">
+            <li class="reveal" style="--d:0.1s">
+              <h3>Transformation and innovation in business</h3>
+              <p>How organizations actually change, told from inside the rooms where it happened.</p>
+            </li>
+            <li class="reveal" style="--d:0.15s">
+              <h3>Health and wellness</h3>
+              <p>What technology gets right, and wrong, about caring for people.</p>
+            </li>
+            <li class="reveal" style="--d:0.2s">
+              <h3>Student athletes and NIL</h3>
+              <p>The new business of being a student athlete, from someone building for them.</p>
+            </li>
+            <li class="reveal" style="--d:0.25s">
+              <h3>Innovation in pet care</h3>
+              <p>Where technology is taking the pet economy, from the front lines of building in it.</p>
+            </li>
+            <li class="reveal" style="--d:0.3s">
+              <h3>The personal journey</h3>
+              <p>The story underneath the resume, told honestly.</p>
+            </li>
+          </ul>
+          <p class="speaking-note reveal" style="--d:0.25s">Keynotes, panels, and fireside conversations. Send your date and audience, and we'll take it from there.</p>
+        </div>
+        <div class="speaking-visual reveal" style="--d:0.12s">
+          <img src="assets/stage2.jpg" alt="A single cool spotlight on a microphone stand on a dark keynote stage" width="2048" height="1152" loading="lazy">
+        </div>
+      </div>
+      <div class="stages reveal" style="--d:0.1s">
+        <p class="list-head">Prior speaking events include</p>
+        <ul>
+          <li>SXSW</li>
+          <li>HLTH</li>
+          <li>Techstars</li>
+          <li>Credera Innovation Forum</li>
+          <li>Slalom AI Innovation Conference</li>
+          <li>Leading Women Executives</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="advisory">
+    <div class="wrap">
+      <h2 class="reveal">The Boardroom</h2>
+      <p class="advisory-intro reveal" style="--d:0.08s">A smaller room, by design.</p>
+      <div class="advisory-cols">
+        <div class="reveal" style="--d:0.1s">
+          <h3>Board service</h3>
+          <p>I take a limited number of board seats with organizations working in health, wellness, and care technology.</p>
+        </div>
+        <div class="reveal" style="--d:0.18s">
+          <h3>Executive advising</h3>
+          <p>One-on-one counsel for leaders navigating growth, transformation, or a chapter they haven't read before.</p>
+        </div>
+      </div>
+      <p class="advisory-how reveal" style="--d:0.22s"><strong>How it starts:</strong> a conversation. If it fits, we set a cadence together.</p>
+    </div>
+  </section>
+
+  <section id="writing" class="writing">
+    <div class="wrap">
+      <h2 class="reveal">The Book</h2>
+      <p class="reveal" style="--d:0.08s">It's underway. The story running beneath everything else on this page, and it isn't finished being lived.</p>
+      <span class="mark reveal" style="--d:0.16s">Details when it's ready.</span>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 class="reveal">Or bring me something new.</h2>
+      <p class="section-body reveal" style="--d:0.08s">The best room in any collective is the one that hasn't been built yet. If you see work we should do together, write to me.</p>
+      <a class="email-link reveal" style="--d:0.16s" href="mailto:summer.wright@gmail.com">summer.wright@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fm">The SWC Collective</span>
+    <span>Summer Wright Collins</span>
+    <span>&copy; 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Rotating hero word: one word per facet of the collective.
+    var words = ["care.", "wellness.", "products.", "leadership.", "the story."];
+    var el = document.getElementById("rot-word");
+    if (el && !reduce) {
+      var i = 0;
+      setInterval(function () {
+        if (document.hidden) return;
+        el.classList.add("swap-out");
+        setTimeout(function () {
+          i = (i + 1) % words.length;
+          el.textContent = words[i];
+          el.classList.remove("swap-out");
+          el.classList.add("swap-in");
+          setTimeout(function () { el.classList.remove("swap-in"); }, 600);
+        }, 450);
+      }, 2600);
+    }
+
+    // Scroll reveals.
+    var reveals = document.querySelectorAll(".reveal");
+    if (reduce || !("IntersectionObserver" in window)) {
+      reveals.forEach(function (n) { n.classList.add("in"); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(function (n) { io.observe(n); });
+    }
+
+    // Header hairline after scroll, via sentinel.
+    var header = document.getElementById("site-header");
+    var sentinel = document.getElementById("header-sentinel");
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        header.classList.toggle("scrolled", !entries[0].isIntersecting);
+      }).observe(sentinel);
+    }
+  })();
+</script>
+
+</body>
+</html>
