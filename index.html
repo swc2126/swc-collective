@@ -178,8 +178,11 @@
   .hero-cta:hover { background: var(--ink); color: var(--paper); }
   .hero-cta:active { transform: translateY(1px); }
   .hero-visual {
-    height: min(72vh, 660px);
+    width: min(100%, 30rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
     overflow: hidden;
+    margin: 0 auto;
   }
   .hero-visual img {
     width: 100%; height: 100%;
@@ -612,7 +615,7 @@
       align-content: start;
       min-height: auto;
     }
-    .hero-visual { height: auto; aspect-ratio: 4 / 3; }
+    .hero-visual { width: min(74vw, 22rem); }
     .door { grid-template-columns: 1fr; gap: 0.45rem; padding: 1.6rem 0.75rem; }
     .door-arrow { display: none; }
     .manifesto-panel { margin-top: -3rem; }
@@ -665,7 +668,7 @@
         <a class="hero-cta fade-up d3" href="#doors">Learn more about my work</a>
       </div>
       <div class="hero-visual fade-up d3">
-        <img src="assets/summer.jpg" alt="Summer Wright Collins smiling in a bright, light-filled room" width="896" height="1200" fetchpriority="high">
+        <img src="assets/summer.jpg" alt="Summer Wright Collins, smiling headshot" width="1200" height="1200" fetchpriority="high">
       </div>
     </div>
   </div>
